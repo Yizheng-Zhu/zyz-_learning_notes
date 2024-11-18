@@ -1,0 +1,38 @@
+#include<stdio.h>
+int main()
+{
+    int n,i,j,max,index=0,temp=0;
+    int a[10]={0};
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }//输入
+
+    //***选择排序的核心***
+    for(j=0;j<n-1;j++)//只需到n-1，n由i遍历
+    {
+        index=j;
+        //假设第一项即为最大项，事实上，只要规定了index，便不需要再去定义一个max，并不停去迭代max
+        //优化点：1.值与坐标只需一个 2.省去了设定初值的烦恼
+        for(i=j+1;i<n;i++)
+        {
+            if(a[i]>a[index])
+            {
+                index=i;//只需迭代index值
+            }
+        }
+        if(index!=j)
+        temp = a[j], a[j] = a[index], a[index] = temp;//交换数值的写法也要熟练
+    }
+    //***
+    //排序
+
+    
+    printf("%d",a[0]);
+    for(i=1;i<n;i++)
+    {
+        printf(" %d",a[i]);
+    }//输出
+    return 0;
+}
